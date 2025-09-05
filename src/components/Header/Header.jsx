@@ -1,6 +1,4 @@
-// Header.jsx
 import React from "react";
-
 import { Link } from "react-router-dom";
 
 const Header = () => (
@@ -8,7 +6,7 @@ const Header = () => (
     <Link to="/" className="logo">
       News Explorer
     </Link>
-    {/* You can add more header content here */}
+    {}
   </header>
 );
 

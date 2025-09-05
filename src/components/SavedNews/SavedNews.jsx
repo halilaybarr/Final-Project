@@ -1,4 +1,3 @@
-// SavedNews.jsx
 import React from "react";
 
 const SavedNews = () => (

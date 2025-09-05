@@ -1,4 +1,3 @@
-// ModalWithForm.jsx
 import React from "react";
 
 const ModalWithForm = ({ children }) => (

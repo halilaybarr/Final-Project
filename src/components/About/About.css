@@ -1,2 +1,74 @@
-/* About.css */
-/* Styles for About component */
+.about {
+  display: flex;
+  gap: 40px;
+  padding: 80px 104px;
+  max-width: 1440px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.about__avatar {
+  flex-shrink: 0;
+}
+
+.about__image-placeholder {
+  width: 464px;
+  height: 464px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.about__smile {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.about__placeholder-text {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.about__content {
+  flex: 1;
+}
+
+.about__title {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 44px;
+  margin: 0 0 24px 0;
+}
+
+.about__description {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 24px 0;
+}
+
+.about__description:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    flex-direction: column;
+    padding: 64px 16px;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .about__image-placeholder {
+    width: 320px;
+    height: 320px;
+  }
+
+  .about__title {
+    font-size: 30px;
+    line-height: 34px;
+  }
+}

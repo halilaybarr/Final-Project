@@ -1,23 +1,27 @@
-/* SearchForm.css */
-/* Styles for SearchForm component */
-
 .search-form {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 80px 104px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 160px 104px 80px;
   text-align: center;
-  color: white;
 }
 
 .search-form__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 608px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .search-form__title {
-  font-weight: 400;
   font-size: 60px;
+  font-weight: 400;
   line-height: 64px;
   margin: 0 0 32px 0;
+  max-width: 728px;
 }
 
 .search-form__subtitle {
@@ -25,49 +29,44 @@
   line-height: 24px;
   margin: 0 0 80px 0;
   opacity: 0.8;
+  max-width: 720px;
 }
 
 .search-form__form {
   display: flex;
   gap: 24px;
-  align-items: stretch;
+  width: 100%;
+  max-width: 608px;
 }
 
 .search-form__input {
   flex: 1;
-  padding: 18px 24px;
-  border: none;
+  padding: 20px 24px;
+  border: 1px solid;
   border-radius: 100px;
   font-size: 16px;
-  line-height: 22px;
   outline: none;
 }
 
-.search-form__input::placeholder {
-  color: #b6bcbf;
-}
-
 .search-form__button {
-  background-color: #347eff;
-  color: white;
+  padding: 20px 24px;
   border: none;
   border-radius: 100px;
-  padding: 18px 24px;
-  font-weight: 500;
   font-size: 18px;
-  line-height: 24px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   white-space: nowrap;
+  min-width: 168px;
 }
 
-.search-form__button:hover {
-  background-color: #2a65cc;
+.search-form__error {
+  margin-top: 16px;
 }
 
 @media screen and (max-width: 768px) {
   .search-form {
-    padding: 64px 16px;
+    padding: 120px 16px 40px;
+    min-height: 80vh;
   }
 
   .search-form__title {

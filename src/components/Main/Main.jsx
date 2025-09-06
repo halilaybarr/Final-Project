@@ -3,6 +3,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
 import NewsCard from "../NewsCard/NewsCard";
 import About from "../About/About";
+import "./Main.css";
 
 const Main = ({
   articles,
@@ -12,6 +13,9 @@ const Main = ({
   visibleCards,
   onSearch,
   onShowMore,
+  isLoggedIn,
+  onSaveArticle,
+  isArticleSaved,
 }) => {
   const displayedArticles = articles.slice(0, visibleCards);
   const hasMoreCards = articles.length > visibleCards;
@@ -37,7 +41,13 @@ const Main = ({
               </div>
               <div className="search-results__cards">
                 {displayedArticles.map((article, index) => (
-                  <NewsCard key={index} article={article} />
+                  <NewsCard
+                    key={index}
+                    article={article}
+                    isLoggedIn={isLoggedIn}
+                    onSaveArticle={onSaveArticle}
+                    isArticleSaved={isArticleSaved}
+                  />
                 ))}
               </div>
               {hasMoreCards && (

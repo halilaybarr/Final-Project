@@ -1,2 +1,63 @@
-/* Footer.css */
-/* Styles for Footer component */
+.footer {
+  padding: 24px 104px;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.footer__copyright {
+  font-size: 16px;
+  margin: 0;
+}
+
+.footer__links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.footer__link {
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+}
+
+.footer__social span {
+  font-size: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 24px 16px;
+  }
+
+  .footer__content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer__links {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

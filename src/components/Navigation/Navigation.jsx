@@ -1,17 +1,17 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
+import "./Navigation.css";
 
-const Navigation = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/saved-news">Saved News</Link>
-      </li>
-    </ul>
+const Navigation = ({ isLoggedIn }) => (
+  <nav className="navigation">
+    <Link to="/" className="navigation__link">
+      Home
+    </Link>
+    {isLoggedIn && (
+      <Link to="/saved-news" className="navigation__link">
+        Saved articles
+      </Link>
+    )}
   </nav>
 );
 

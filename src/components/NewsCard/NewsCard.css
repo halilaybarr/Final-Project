@@ -1,2 +1,143 @@
-/* NewsCard.css */
-/* Styles for NewsCard component */
+.news-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 576px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.news-card__image {
+  width: 100%;
+  height: 272px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-card__image {
+  transform: scale(1.02);
+}
+
+.news-card__save-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  transition: opacity 0.3s ease;
+}
+
+.news-card__save-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.news-card__save-button_inactive {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.news-card__save-button:disabled {
+  cursor: not-allowed;
+}
+
+.news-card__save-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 7C6 6.44772 6.44772 6 7 6H17C17.5523 6 18 6.44772 18 7V18L12 15L6 18V7Z' stroke='%23B6BCBF' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.news-card__save-button_saved .news-card__save-icon {
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 7C6 6.44772 6.44772 6 7 6H17C17.5523 6 18 6.44772 18 7V18L12 15L6 18V7Z' fill='%23347EFF' stroke='%23347EFF' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.news-card__content {
+  padding: 20px 24px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card__date {
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 12px;
+  opacity: 0.6;
+  color: #1a1b22;
+}
+
+.news-card__title {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  margin: 0 0 16px 0;
+  color: #1a1b22;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.news-card:hover .news-card__title {
+  color: #347eff;
+}
+
+.news-card__description {
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0 0 auto 0;
+  opacity: 0.6;
+  color: #1a1b22;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card__source {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 24px;
+  color: #b6bcbf;
+}
+
+@media screen and (max-width: 768px) {
+  .news-card {
+    height: auto;
+    min-height: 576px;
+  }
+
+  .news-card__title {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .news-card__content {
+    padding: 16px 20px 20px;
+  }
+}

@@ -1,14 +1,13 @@
-/* Main.css */
-/* Styles for Main component */
-
 .main {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .search-results {
   padding: 80px 104px;
   max-width: 1440px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .search-results__error {
@@ -19,7 +18,6 @@
 .search-results__error p {
   font-size: 26px;
   line-height: 30px;
-  color: #1a1b22;
   margin: 0;
 }
 
@@ -31,13 +29,12 @@
   font-weight: 400;
   font-size: 40px;
   line-height: 44px;
-  color: #1a1b22;
   margin: 0;
 }
 
 .search-results__cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 64px;
 }
@@ -45,20 +42,21 @@
 .search-results__show-more {
   display: block;
   margin: 0 auto;
-  background-color: #fff;
-  border: 1px solid #d1d2d6;
+  border: 1px solid;
   border-radius: 80px;
   padding: 18px 20px;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  color: #1a1b22;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  background: transparent;
+  min-width: 288px;
 }
 
-.search-results__show-more:hover {
-  background-color: #f5f6f7;
+@media screen and (max-width: 1024px) {
+  .search-results__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (max-width: 768px) {

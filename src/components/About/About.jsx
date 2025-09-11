@@ -1,27 +1,30 @@
 import React from "react";
 import "./About.css";
+import profileImage from "../../assets/images/halil-aybar.jpeg";
 
 const About = () => (
   <section className="about">
     <div className="about__avatar">
-      <div className="about__image-placeholder">
-        <span className="about__smile">☺</span>
-        <p className="about__placeholder-text">
-          Placeholder image.
-          <br />
-          Put an image of yourself here.
-        </p>
-      </div>
+      <img src={profileImage} alt="Halil Aybar" className="about__image" />
     </div>
     <div className="about__content">
       <h2 className="about__title">About the author</h2>
       <p className="about__description">
-        This block describes the project author. Here you should indicate your
-        name, what you do, and which development technologies you know.
+        Hi, I'm Halil Aybar, a passionate full-stack web developer with a strong
+        foundation in modern web technologies. I specialize in React,
+        JavaScript, Node.js, and creating responsive, user-friendly applications
+        that solve real-world problems.
       </p>
       <p className="about__description">
-        You can also talk about your experience with TripleTen, what you learned
-        there, and how you can help potential customers.
+        Through my journey with TripleTen's intensive web development bootcamp,
+        I've mastered frontend and backend development, API integration,
+        database management, and deployment strategies. I'm passionate about
+        writing clean, efficient code and creating seamless user experiences.
+      </p>
+      <p className="about__description">
+        I'm excited to bring my technical skills, problem-solving mindset, and
+        collaborative spirit to help businesses build innovative web solutions
+        that drive growth and user engagement.
       </p>
     </div>
   </section>

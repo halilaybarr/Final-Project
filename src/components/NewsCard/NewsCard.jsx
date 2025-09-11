@@ -6,6 +6,9 @@ const NewsCard = ({
   isLoggedIn = false,
   onSaveArticle,
   isArticleSaved,
+  onRemoveArticle,
+  showRemoveButton = false,
+  isSaved = false,
 }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -24,13 +27,22 @@ const NewsCard = ({
     onSaveArticle(article);
   };
 
+  const handleRemoveClick = (e) => {
+    e.stopPropagation();
+    if (onRemoveArticle) {
+      onRemoveArticle(article);
+    }
+  };
+
   const handleCardClick = () => {
     if (article.url) {
       window.open(article.url, "_blank", "noopener,noreferrer");
     }
   };
 
-  const isSaved = isArticleSaved && isArticleSaved(article);
+  const isArticleCurrentlySaved = isArticleSaved
+    ? isArticleSaved(article)
+    : isSaved;
 
   return (
     <article className="news-card" onClick={handleCardClick}>
@@ -39,23 +51,43 @@ const NewsCard = ({
         alt={article.title}
         className="news-card__image"
       />
-      <button
-        className={`news-card__save-button ${
-          !isLoggedIn ? "news-card__save-button_inactive" : ""
-        } ${isSaved ? "news-card__save-button_saved" : ""}`}
-        onClick={handleSaveClick}
-        disabled={!isLoggedIn}
-        aria-label={isSaved ? "Remove from saved" : "Save article"}
-        title={
-          !isLoggedIn
-            ? "Sign in to save articles"
-            : isSaved
-            ? "Remove from saved"
-            : "Save article"
-        }
-      >
-        <span className="news-card__save-icon"></span>
-      </button>
+
+      {showRemoveButton ? (
+        <>
+          <button
+            className="news-card__remove-button"
+            onClick={handleRemoveClick}
+            aria-label="Remove from saved"
+            title="Remove from saved"
+          >
+            <span className="news-card__remove-icon"></span>
+          </button>
+          {article.keyword && (
+            <div className="news-card__keyword">{article.keyword}</div>
+          )}
+        </>
+      ) : (
+        <button
+          className={`news-card__save-button ${
+            !isLoggedIn ? "news-card__save-button_inactive" : ""
+          } ${isArticleCurrentlySaved ? "news-card__save-button_saved" : ""}`}
+          onClick={handleSaveClick}
+          disabled={!isLoggedIn}
+          aria-label={
+            isArticleCurrentlySaved ? "Remove from saved" : "Save article"
+          }
+          title={
+            !isLoggedIn
+              ? "Sign in to save articles"
+              : isArticleCurrentlySaved
+              ? "Remove from saved"
+              : "Save article"
+          }
+        >
+          <span className="news-card__save-icon"></span>
+        </button>
+      )}
+
       <div className="news-card__content">
         <div className="news-card__date">{formatDate(article.publishedAt)}</div>
         <h3 className="news-card__title">{article.title}</h3>

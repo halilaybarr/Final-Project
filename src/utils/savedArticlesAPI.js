@@ -12,6 +12,7 @@ export function getItems() {
             "Marine biologists have identified a previously unknown species of bioluminescent fish in the Pacific Ocean depths.",
           source: { name: "Science Daily" },
           publishedAt: "2025-09-01T10:30:00Z",
+          keyword: "Nature",
         },
         {
           _id: "65f7371e7bce9e7d331b11a0",
@@ -23,6 +24,7 @@ export function getItems() {
             "A new artificial intelligence system can now diagnose rare diseases with 95% accuracy, potentially saving thousands of lives.",
           source: { name: "Tech Health News" },
           publishedAt: "2025-09-02T14:15:00Z",
+          keyword: "Technology",
         },
         {
           _id: "65f7372a8bce9e7d331b11a1",
@@ -34,6 +36,31 @@ export function getItems() {
             "Satellite data shows Arctic sea ice has reached its lowest extent since measurements began, raising concerns about global warming acceleration.",
           source: { name: "Environmental Monitor" },
           publishedAt: "2025-09-03T08:45:00Z",
+          keyword: "Nature",
+        },
+        {
+          _id: "65f7372b8bce9e7d331b11a2",
+          title: "Yellowstone National Park Sees Record Wildlife Recovery",
+          url: "https://example.com/news/yellowstone-wildlife-recovery",
+          urlToImage:
+            "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400",
+          description:
+            "Conservation efforts in Yellowstone have led to the highest wildlife population numbers in decades, showcasing successful ecosystem restoration.",
+          source: { name: "National Geographic" },
+          publishedAt: "2025-09-04T12:20:00Z",
+          keyword: "Yellowstone",
+        },
+        {
+          _id: "65f7372c8bce9e7d331b11a3",
+          title: "New Photography Techniques Capture Stunning Nature Scenes",
+          url: "https://example.com/news/nature-photography-techniques",
+          urlToImage:
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400",
+          description:
+            "Professional photographers share innovative methods for capturing the beauty of natural landscapes and wildlife behavior.",
+          source: { name: "Photography Weekly" },
+          publishedAt: "2025-09-05T16:30:00Z",
+          keyword: "Photography",
         },
       ]);
     }, 800);
@@ -49,16 +76,33 @@ export function saveArticle(article) {
 
     setTimeout(() => {
       resolve({
-        _id: "65f7371e7bce9e7d331b11a0",
+        _id: `65f7371e7bce9e7d331b11a${Math.floor(Math.random() * 1000)}`,
         url: article.url,
         title: article.title,
         urlToImage: article.urlToImage,
         description: article.description,
         source: article.source,
         publishedAt: article.publishedAt,
+        keyword: article.keyword || "General",
         savedAt: new Date().toISOString(),
       });
     }, 600);
+  });
+}
+
+export function removeArticle(articleId) {
+  return new Promise((resolve, reject) => {
+    if (!articleId) {
+      reject(new Error("Article ID is required"));
+      return;
+    }
+
+    setTimeout(() => {
+      resolve({
+        message: "Article removed successfully",
+        deletedId: articleId,
+      });
+    }, 500);
   });
 }
 

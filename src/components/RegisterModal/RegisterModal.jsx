@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./RegisterModal.css";
 
 const RegisterModal = ({ isOpen, onClose, onRegister, onSwitchToLogin }) => {
@@ -9,6 +9,24 @@ const RegisterModal = ({ isOpen, onClose, onRegister, onSwitchToLogin }) => {
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscapeKey);
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen, onClose]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

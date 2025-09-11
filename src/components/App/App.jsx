@@ -18,12 +18,14 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [savedArticles, setSavedArticles] = useState([]);
   const [activeModal, setActiveModal] = useState(null);
+  const [currentSearchKeyword, setCurrentSearchKeyword] = useState("");
 
   const handleSearch = async (searchQuery) => {
     setIsLoading(true);
     setError("");
     setHasSearched(true);
     setVisibleCards(3);
+    setCurrentSearchKeyword(searchQuery);
 
     try {
       const { fetchNews } = await import("../../utils/api.js");
@@ -65,6 +67,16 @@ const App = () => {
       const userData = await authorize(credentials);
       setCurrentUser(userData);
       setIsLoggedIn(true);
+
+      // Load saved articles after successful login
+      try {
+        const { getItems } = await import("../../utils/savedArticlesAPI.js");
+        const userSavedArticles = await getItems();
+        setSavedArticles(userSavedArticles);
+      } catch (error) {
+        console.error("Error loading saved articles:", error);
+      }
+
       return userData;
     } catch (error) {
       throw error;
@@ -117,10 +129,30 @@ const App = () => {
 
     try {
       const { saveArticle } = await import("../../utils/savedArticlesAPI.js");
-      const savedArticle = await saveArticle(article);
+      const articleWithKeyword = {
+        ...article,
+        keyword: currentSearchKeyword,
+      };
+      const savedArticle = await saveArticle(articleWithKeyword);
       setSavedArticles((prev) => [...prev, savedArticle]);
     } catch (error) {
       console.error("Error saving article:", error);
+    }
+  };
+
+  const handleRemoveArticle = async (article) => {
+    try {
+      const { removeArticle } = await import("../../utils/savedArticlesAPI.js");
+      await removeArticle(article._id || article.url);
+      setSavedArticles((prev) =>
+        prev.filter(
+          (saved) =>
+            (saved._id && saved._id !== article._id) ||
+            saved.url !== article.url
+        )
+      );
+    } catch (error) {
+      console.error("Error removing article:", error);
     }
   };
 
@@ -161,6 +193,7 @@ const App = () => {
               savedArticles={savedArticles}
               isLoggedIn={isLoggedIn}
               currentUser={currentUser}
+              onRemoveArticle={handleRemoveArticle}
             />
           }
         />

@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -8,7 +13,8 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SuccessModal from "../SuccessModal/SuccessModal";
 
-const App = () => {
+const AppContent = () => {
+  const navigate = useNavigate();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
@@ -65,7 +71,7 @@ const App = () => {
     try {
       const { authorize } = await import("../../utils/auth.js");
       const userData = await authorize(credentials);
-      setCurrentUser(userData);
+      setCurrentUser({ name: userData.name });
       setIsLoggedIn(true);
 
       // Load saved articles after successful login
@@ -76,6 +82,10 @@ const App = () => {
       } catch (error) {
         console.error("Error loading saved articles:", error);
       }
+
+      // Close modal and navigate to saved articles
+      setActiveModal(null);
+      navigate("/saved-news");
 
       return userData;
     } catch (error) {
@@ -124,6 +134,11 @@ const App = () => {
     setActiveModal("login");
   };
 
+  const handleSuccessLogin = () => {
+    setActiveModal(null);
+    navigate("/saved-news");
+  };
+
   const handleSaveArticle = async (article) => {
     if (!isLoggedIn) return;
 
@@ -161,7 +176,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <>
       <Header
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
@@ -218,6 +233,14 @@ const App = () => {
         isOpen={activeModal === "success"}
         onClose={handleSuccessModalClose}
       />
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 };

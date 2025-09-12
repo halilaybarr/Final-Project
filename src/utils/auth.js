@@ -1,5 +1,7 @@
-export const authorize = (email, password) => {
+export const authorize = (credentials) => {
   return new Promise((resolve, reject) => {
+    const { email, password } = credentials;
+
     if (!email || !password) {
       reject(new Error("Email and password are required"));
       return;
@@ -9,14 +11,21 @@ export const authorize = (email, password) => {
       if (email === "wrong@email.com") {
         reject(new Error("Incorrect email or password"));
       } else {
-        resolve({ token: "a-fake-jwt-token-12345" });
+        // For demo purposes, any valid email will work
+        const userName = email.includes("@") ? email.split("@")[0] : "User";
+        resolve({
+          token: "a-fake-jwt-token-12345",
+          name: userName.charAt(0).toUpperCase() + userName.slice(1),
+        });
       }
-    }, 1000);
+    }, 800);
   });
 };
 
-export const register = (email, password, name) => {
+export const register = (userData) => {
   return new Promise((resolve, reject) => {
+    const { email, password, name } = userData;
+
     if (!email || !password || !name) {
       reject(new Error("All fields are required"));
       return;
@@ -26,9 +35,12 @@ export const register = (email, password, name) => {
       if (email === "existing@email.com") {
         reject(new Error("User with this email already exists"));
       } else {
-        resolve({ token: "a-fake-jwt-token-67890" });
+        resolve({
+          token: "a-fake-jwt-token-67890",
+          name: name.charAt(0).toUpperCase() + name.slice(1),
+        });
       }
-    }, 1000);
+    }, 800);
   });
 };
 

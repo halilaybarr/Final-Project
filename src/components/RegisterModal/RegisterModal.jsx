@@ -84,7 +84,6 @@ const RegisterModal = ({ isOpen, onClose, onRegister, onSwitchToLogin }) => {
         password: formData.password,
         name: formData.username,
       });
-      onClose();
       setFormData({ email: "", password: "", username: "" });
     } catch (error) {
       setErrors({

@@ -71,7 +71,6 @@ const LoginModal = ({ isOpen, onClose, onLogin, onSwitchToRegister }) => {
 
     try {
       await onLogin(formData);
-      onClose();
       setFormData({ email: "", password: "" });
     } catch (error) {
       setErrors({ submit: error.message || "Login failed. Please try again." });

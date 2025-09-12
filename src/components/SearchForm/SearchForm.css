@@ -6,6 +6,23 @@
   align-items: center;
   padding: 160px 104px 80px;
   text-align: center;
+  background-image: url("../../assets/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  position: relative;
+}
+
+.search-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .search-form__content {
@@ -14,6 +31,8 @@
   align-items: center;
   max-width: 608px;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .search-form__title {
@@ -42,10 +61,12 @@
 .search-form__input {
   flex: 1;
   padding: 20px 24px;
-  border: 1px solid;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 100px;
   font-size: 16px;
   outline: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1b22;
 }
 
 .search-form__button {
@@ -57,6 +78,13 @@
   cursor: pointer;
   white-space: nowrap;
   min-width: 168px;
+  background: #347eff;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.search-form__button:hover {
+  background: #2c6ae6;
 }
 
 .search-form__error {

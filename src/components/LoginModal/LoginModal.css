@@ -169,10 +169,15 @@
   .modal {
     padding: 24px;
     margin: 16px;
+    max-width: calc(100vw - 32px);
   }
 
   .modal__title {
     font-size: 20px;
     margin-bottom: 24px;
+  }
+
+  .modal__submit {
+    padding: 16px 24px;
   }
 }

@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   useNavigate,
+  useLocation,
 } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -15,6 +16,7 @@ import SuccessModal from "../SuccessModal/SuccessModal";
 
 const AppContent = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
@@ -182,6 +184,7 @@ const AppContent = () => {
         currentUser={currentUser}
         onOpenLoginModal={handleOpenLoginModal}
         onLogout={handleLogout}
+        currentPath={location.pathname}
       />
       <Routes>
         <Route

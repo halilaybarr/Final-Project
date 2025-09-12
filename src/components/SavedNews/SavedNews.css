@@ -1,6 +1,7 @@
 .saved-news {
   min-height: 100vh;
   background-color: #ffffff;
+  padding-top: 80px;
 }
 
 .saved-news__cards {

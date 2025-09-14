@@ -27,10 +27,14 @@
   transform: scale(1.02);
 }
 
-.news-card__save-button {
+.news-card__save-container {
   position: absolute;
   top: 24px;
   right: 24px;
+  z-index: 5;
+}
+
+.news-card__save-button {
   width: 40px;
   height: 40px;
   border: none;
@@ -43,9 +47,18 @@
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 5;
   padding: 0;
   margin: 0;
+}
+
+.news-card__save-button_disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.news-card__save-button_disabled:hover {
+  transform: none;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .news-card__save-button:hover:not(:disabled) {

@@ -30,9 +30,7 @@ const NewsCard = ({
   const handleSaveClick = (e) => {
     e.stopPropagation();
     if (!isLoggedIn) {
-      setShowTooltip(true);
-      setTimeout(() => setShowTooltip(false), 3000);
-      return;
+      return; // Do nothing when not logged in
     }
     if (onSaveArticle) {
       onSaveArticle(article);
@@ -43,6 +41,18 @@ const NewsCard = ({
     setShowTooltip(false);
     if (onOpenLoginModal) {
       onOpenLoginModal();
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (!isLoggedIn) {
+      setShowTooltip(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isLoggedIn) {
+      setShowTooltip(false);
     }
   };
 
@@ -64,39 +74,43 @@ const NewsCard = ({
     : isSaved;
 
   return (
-    <>
-      <SaveTooltip isVisible={showTooltip} onSignInClick={handleSignInClick} />
-      <article className="news-card" onClick={handleCardClick}>
-        <img
-          src={article.urlToImage || "/default-news-image.jpg"}
-          alt={article.title}
-          className="news-card__image"
-        />
+    <article className="news-card" onClick={handleCardClick}>
+      <img
+        src={article.urlToImage || "/default-news-image.jpg"}
+        alt={article.title}
+        className="news-card__image"
+      />
 
-        {showRemoveButton ? (
-          <>
-            <button
-              className="news-card__remove-button"
-              onClick={handleRemoveClick}
-              aria-label="Remove from saved"
-              title="Remove from saved"
-            >
-              <img
-                src={trashIcon}
-                alt="Delete article"
-                className="news-card__remove-icon"
-              />
-            </button>
-            {article.keyword && (
-              <div className="news-card__keyword">{article.keyword}</div>
-            )}
-          </>
-        ) : (
+      {showRemoveButton ? (
+        <>
+          <button
+            className="news-card__remove-button"
+            onClick={handleRemoveClick}
+            aria-label="Remove from saved"
+            title="Remove from saved"
+          >
+            <img
+              src={trashIcon}
+              alt="Delete article"
+              className="news-card__remove-icon"
+            />
+          </button>
+          {article.keyword && (
+            <div className="news-card__keyword">{article.keyword}</div>
+          )}
+        </>
+      ) : (
+        <div
+          className="news-card__save-container"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <button
             className={`news-card__save-button ${
-              isArticleCurrentlySaved ? "news-card__save-button_saved" : ""
-            }`}
+              !isLoggedIn ? "news-card__save-button_disabled" : ""
+            } ${isArticleCurrentlySaved ? "news-card__save-button_saved" : ""}`}
             onClick={handleSaveClick}
+            disabled={!isLoggedIn}
             aria-label={
               isArticleCurrentlySaved ? "Remove from saved" : "Save article"
             }
@@ -120,18 +134,20 @@ const NewsCard = ({
               className="news-card__save-icon"
             />
           </button>
-        )}
-
-        <div className="news-card__content">
-          <div className="news-card__date">
-            {formatDate(article.publishedAt)}
-          </div>
-          <h3 className="news-card__title">{article.title}</h3>
-          <p className="news-card__description">{article.description}</p>
-          <div className="news-card__source">{article.source.name}</div>
+          <SaveTooltip
+            isVisible={showTooltip}
+            onSignInClick={handleSignInClick}
+          />
         </div>
-      </article>
-    </>
+      )}
+
+      <div className="news-card__content">
+        <div className="news-card__date">{formatDate(article.publishedAt)}</div>
+        <h3 className="news-card__title">{article.title}</h3>
+        <p className="news-card__description">{article.description}</p>
+        <div className="news-card__source">{article.source.name}</div>
+      </div>
+    </article>
   );
 };
 

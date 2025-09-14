@@ -201,6 +201,7 @@ const AppContent = () => {
               isLoggedIn={isLoggedIn}
               onSaveArticle={handleSaveArticle}
               isArticleSaved={isArticleSaved}
+              onOpenLoginModal={handleOpenLoginModal}
             />
           }
         />

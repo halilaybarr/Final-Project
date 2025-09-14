@@ -63,6 +63,7 @@ const Header = ({
               onClick={handleLogout}
               aria-label="Logout"
             >
+              <span className="header__logout-text">Sign out</span>
               <span className="header__logout-icon">↗</span>
             </button>
           </div>

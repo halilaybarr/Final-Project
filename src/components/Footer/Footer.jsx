@@ -1,10 +1,14 @@
 import React from "react";
 import "./Footer.css";
+import githubIcon from "../../assets/images/github-icon.svg";
+import linkedinIcon from "../../assets/images/linkedin-icon.svg";
 
 const Footer = () => (
   <footer className="footer">
     <div className="footer__content">
-      <p className="footer__copyright">© 2024 Supersite, Powered by News API</p>
+      <p className="footer__copyright">
+        © 2024 Halil Aybar, Powered by News API
+      </p>
       <div className="footer__links">
         <a href="/" className="footer__link">
           Home
@@ -14,18 +18,22 @@ const Footer = () => (
         </a>
         <div className="footer__socials">
           <a
-            href="https://github.com"
-            className="footer__social"
+            href="https://github.com/halilaybarr"
+            className="footer__social-icon"
             aria-label="GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span>GitHub</span>
+            <img src={githubIcon} alt="GitHub" className="footer__icon" />
           </a>
           <a
-            href="https://linkedin.com"
-            className="footer__social"
+            href="https://www.linkedin.com/in/halil-aybar/"
+            className="footer__social-icon"
             aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span>LinkedIn</span>
+            <img src={linkedinIcon} alt="LinkedIn" className="footer__icon" />
           </a>
         </div>
       </div>

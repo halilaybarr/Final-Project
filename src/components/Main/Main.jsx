@@ -16,6 +16,7 @@ const Main = ({
   isLoggedIn,
   onSaveArticle,
   isArticleSaved,
+  onOpenLoginModal,
 }) => {
   const displayedArticles = articles.slice(0, visibleCards);
   const hasMoreCards = articles.length > visibleCards;
@@ -47,6 +48,7 @@ const Main = ({
                     isLoggedIn={isLoggedIn}
                     onSaveArticle={onSaveArticle}
                     isArticleSaved={isArticleSaved}
+                    onOpenLoginModal={onOpenLoginModal}
                   />
                 ))}
               </div>

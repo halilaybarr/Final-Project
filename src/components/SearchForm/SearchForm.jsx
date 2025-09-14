@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./SearchForm.css";
+import heroBg from "../../assets/images/hero-bg.jpg";
 
 const SearchForm = ({ onSearch }) => {
   const [query, setQuery] = useState("");
@@ -18,7 +19,10 @@ const SearchForm = ({ onSearch }) => {
   };
 
   return (
-    <section className="search-form">
+    <section
+      className="search-form"
+      style={{ backgroundImage: `url(${heroBg})` }}
+    >
       <div className="search-form__content">
         <h1 className="search-form__title">What's going on in the world?</h1>
         <p className="search-form__subtitle">

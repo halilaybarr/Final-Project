@@ -6,7 +6,6 @@
   align-items: center;
   padding: 160px 104px 80px;
   text-align: center;
-  background-image: url("../../assets/hero-bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -89,6 +88,42 @@
 
 .search-form__error {
   margin-top: 16px;
+}
+
+@media screen and (max-width: 1023px) and (min-width: 769px) {
+  .search-form {
+    padding: 140px 40px 60px;
+    min-height: 90vh;
+  }
+
+  .search-form__title {
+    font-size: 48px;
+    line-height: 52px;
+    margin-bottom: 24px;
+  }
+
+  .search-form__subtitle {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 60px;
+    max-width: 600px;
+  }
+
+  .search-form__form {
+    gap: 20px;
+    max-width: 560px;
+  }
+
+  .search-form__input {
+    padding: 18px 20px;
+    font-size: 15px;
+  }
+
+  .search-form__button {
+    padding: 18px 20px;
+    font-size: 16px;
+    min-width: 150px;
+  }
 }
 
 @media screen and (max-width: 768px) {

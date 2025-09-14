@@ -19,6 +19,19 @@
   justify-items: center;
 }
 
+@media screen and (max-width: 1023px) and (min-width: 769px) {
+  .saved-news__cards {
+    padding: 60px 0;
+  }
+
+  .saved-news__container {
+    padding: 0 32px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 800px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .saved-news__cards {
     padding: 40px 0;

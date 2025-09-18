@@ -20,7 +20,9 @@ const SaveTooltip = ({ isVisible, onSignInClick }) => {
     }
   }, [isVisible]);
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div

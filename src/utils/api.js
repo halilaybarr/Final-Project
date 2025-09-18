@@ -9,14 +9,14 @@ export const fetchNews = async (query, apiKey, from, to, pageSize) => {
   }
 
   const url = `${newsApiBaseUrl}?q=${encodeURIComponent(
-    query
+    query,
   )}&apiKey=${apiKey}&from=${from}&to=${to}&pageSize=${pageSize}&language=en`;
 
   const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error(
-      "Sorry, something went wrong during the request. Please try again later."
+      "Sorry, something went wrong during the request. Please try again later.",
     );
   }
 

@@ -1,11 +1,11 @@
 .search-form {
-  min-height: 100vh;
+  height: 576px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 160px 104px 80px;
-  text-align: center;
+  padding: 0 104px;
+  text-align: left;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -27,7 +27,7 @@
 .search-form__content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   max-width: 608px;
   width: 100%;
   position: relative;
@@ -35,6 +35,7 @@
 }
 
 .search-form__title {
+  font-family: "Roboto Slab", serif;
   font-size: 60px;
   font-weight: 400;
   line-height: 64px;
@@ -52,14 +53,16 @@
 
 .search-form__form {
   display: flex;
-  gap: 24px;
+  gap: 0;
   width: 100%;
   max-width: 608px;
+  position: relative;
 }
 
 .search-form__input {
   flex: 1;
   padding: 20px 24px;
+  padding-right: 180px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 100px;
   font-size: 16px;
@@ -68,8 +71,21 @@
   color: #1a1b22;
 }
 
+.search-form__input_error {
+  border-color: #ff3333;
+}
+
+.search-form__input_error:focus {
+  border-color: #ff3333;
+  box-shadow: 0 0 0 3px rgba(255, 51, 51, 0.1);
+}
+
 .search-form__button {
-  padding: 20px 24px;
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 16px 24px;
   border: none;
   border-radius: 100px;
   font-size: 18px;
@@ -90,16 +106,33 @@
   margin-top: 16px;
 }
 
+.search-form__error p {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #ff3333;
+  margin: 0;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  border: 1px solid #ff3333;
+}
+
 @media screen and (max-width: 1023px) and (min-width: 769px) {
   .search-form {
     padding: 140px 40px 60px;
-    min-height: 90vh;
+    height: 576px;
+  }
+
+  .search-form__content {
+    align-items: flex-start;
   }
 
   .search-form__title {
+    font-family: "Roboto Slab", serif;
     font-size: 48px;
     line-height: 52px;
     margin-bottom: 24px;
+    text-align: left;
   }
 
   .search-form__subtitle {
@@ -107,38 +140,65 @@
     line-height: 22px;
     margin-bottom: 60px;
     max-width: 600px;
+    text-align: left;
   }
 
   .search-form__form {
-    gap: 20px;
+    gap: 0;
     max-width: 560px;
+    position: relative;
   }
 
   .search-form__input {
     padding: 18px 20px;
+    padding-right: 160px;
     font-size: 15px;
   }
 
   .search-form__button {
-    padding: 18px 20px;
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px 20px;
     font-size: 16px;
-    min-width: 150px;
+    min-width: 140px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .search-form {
     padding: 120px 16px 40px;
-    min-height: 80vh;
+    height: 576px;
+  }
+
+  .search-form__content {
+    align-items: flex-start;
   }
 
   .search-form__title {
+    font-family: "Roboto Slab", serif;
     font-size: 36px;
     line-height: 40px;
+    text-align: left;
+  }
+
+  .search-form__subtitle {
+    text-align: left;
   }
 
   .search-form__form {
     flex-direction: column;
     gap: 16px;
+  }
+
+  .search-form__button {
+    position: static;
+    transform: none;
+    align-self: flex-start;
+  }
+
+  .search-form__input {
+    padding-right: 24px;
   }
 }

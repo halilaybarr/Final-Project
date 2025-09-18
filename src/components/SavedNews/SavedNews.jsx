@@ -23,8 +23,8 @@ const SavedNews = ({ savedArticles, currentUser, onRemoveArticle }) => {
   const keywordText =
     keywords.length > 2
       ? `${keywords.slice(0, 2).join(", ")}, and ${keywords.length - 2} other${
-          keywords.length > 3 ? "s" : ""
-        }`
+        keywords.length > 3 ? "s" : ""
+      }`
       : keywords.join(", ");
 
   return (

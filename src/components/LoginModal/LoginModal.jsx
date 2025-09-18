@@ -85,7 +85,9 @@ const LoginModal = ({ isOpen, onClose, onLogin, onSwitchToRegister }) => {
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>

@@ -50,7 +50,7 @@ const AppContent = () => {
       );
 
       if (articles.length === 0) {
-        setError("Nothing Found");
+        setError("Sorry, but nothing matched your search terms.");
       } else {
         setArticles(articles);
       }
@@ -116,7 +116,7 @@ const AppContent = () => {
     setActiveModal("login");
   };
 
-  const handleOpenRegisterModal = () => {
+  const _handleOpenRegisterModal = () => {
     setActiveModal("register");
   };
 
@@ -136,13 +136,15 @@ const AppContent = () => {
     setActiveModal("login");
   };
 
-  const handleSuccessLogin = () => {
+  const _handleSuccessLogin = () => {
     setActiveModal(null);
     navigate("/saved-news");
   };
 
   const handleSaveArticle = async (article) => {
-    if (!isLoggedIn) return;
+    if (!isLoggedIn) {
+      return;
+    }
 
     try {
       const { saveArticle } = await import("../../utils/savedArticlesAPI.js");

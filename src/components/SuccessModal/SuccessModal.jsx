@@ -8,7 +8,9 @@ const SuccessModal = ({ isOpen, onClose }) => {
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>

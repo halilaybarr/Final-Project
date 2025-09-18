@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import "./NewsCard.css";
 import SaveTooltip from "../SaveTooltip/SaveTooltip";
 import normalSave from "../../assets/images/normal-save.svg";
-import hoverSave from "../../assets/images/hover-save.svg";
 import markedSave from "../../assets/images/marked-save.svg";
 import trashIcon from "../../assets/images/trash.svg";
-import trashHoverIcon from "../../assets/images/trash-hover.svg";
 
 const NewsCard = ({
   article,

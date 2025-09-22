@@ -13,6 +13,7 @@ import SavedNews from "../SavedNews/SavedNews";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SuccessModal from "../SuccessModal/SuccessModal";
+import "./App.css";
 
 const AppContent = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const AppContent = () => {
         "c336c646c8d44e399c65a611afacf0fd",
         weekAgo.toISOString().split("T")[0],
         today.toISOString().split("T")[0],
-        100
+        100,
       );
 
       if (articles.length === 0) {
@@ -57,7 +58,7 @@ const AppContent = () => {
     } catch (err) {
       setError(
         err.message ||
-          "Sorry, something went wrong during the request. Please try again later."
+          "Sorry, something went wrong during the request. Please try again later.",
       );
       setArticles([]);
     } finally {
@@ -167,8 +168,8 @@ const AppContent = () => {
         prev.filter(
           (saved) =>
             (saved._id && saved._id !== article._id) ||
-            saved.url !== article.url
-        )
+            saved.url !== article.url,
+        ),
       );
     } catch (error) {
       console.error("Error removing article:", error);
@@ -180,7 +181,7 @@ const AppContent = () => {
   };
 
   return (
-    <>
+    <div className="app">
       <Header
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
@@ -239,7 +240,7 @@ const AppContent = () => {
         isOpen={activeModal === "success"}
         onClose={handleSuccessModalClose}
       />
-    </>
+    </div>
   );
 };
 

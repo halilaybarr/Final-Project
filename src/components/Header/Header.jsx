@@ -54,7 +54,11 @@ const Header = ({
       <div
         className={`header__nav ${isMobileMenuOpen ? "header__nav_open" : ""}`}
       >
-        <Navigation isLoggedIn={isLoggedIn} onLinkClick={closeMobileMenu} />
+        <Navigation
+          isLoggedIn={isLoggedIn}
+          onLinkClick={closeMobileMenu}
+          currentPath={currentPath}
+        />
         {isLoggedIn ? (
           <div className="header__user">
             <span className="header__username">{currentUser?.name}</span>

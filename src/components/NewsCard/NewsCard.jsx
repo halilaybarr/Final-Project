@@ -116,8 +116,8 @@ const NewsCard = ({
               !isLoggedIn
                 ? "Sign in to save articles"
                 : isArticleCurrentlySaved
-                ? "Remove from saved"
-                : "Save article"
+                  ? "Remove from saved"
+                  : "Save article"
             }
           >
             <img
@@ -125,8 +125,8 @@ const NewsCard = ({
                 isArticleCurrentlySaved
                   ? markedSave
                   : isLoggedIn
-                  ? normalSave
-                  : normalSave
+                    ? normalSave
+                    : normalSave
               }
               alt="Save button"
               className="news-card__save-icon"

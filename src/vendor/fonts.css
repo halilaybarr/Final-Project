@@ -1,8 +1,8 @@
 /* Fonts */
 @font-face {
   font-family: "Inter";
-  src: url("./vendor/inter-400-regular.woff2") format("woff2"),
-    url("./vendor/inter-400-regular.woff") format("woff");
+  src: url("./inter-400-regular.woff2") format("woff2"),
+    url("./inter-400-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,8 +10,8 @@
 
 @font-face {
   font-family: "Inter";
-  src: url("./vendor/inter-500.woff2") format("woff2"),
-    url("./vendor/inter-500.woff") format("woff");
+  src: url("./inter-500.woff2") format("woff2"),
+    url("./inter-500.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -19,8 +19,8 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("./vendor/roboto-400-regular.woff2") format("woff2"),
-    url("./vendor/roboto-400-regular.woff") format("woff");
+  src: url("./roboto-400-regular.woff2") format("woff2"),
+    url("./roboto-400-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -28,8 +28,8 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("./vendor/roboto-500.woff2") format("woff2"),
-    url("./vendor/roboto-500.woff") format("woff");
+  src: url("./roboto-500.woff2") format("woff2"),
+    url("./roboto-500.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -37,8 +37,8 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("./vendor/roboto-700.woff2") format("woff2"),
-    url("./vendor/roboto-700.woff") format("woff");
+  src: url("./roboto-700.woff2") format("woff2"),
+    url("./roboto-700.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -46,8 +46,8 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("./vendor/roboto-900.woff2") format("woff2"),
-    url("./vendor/roboto-900.woff") format("woff");
+  src: url("./roboto-900.woff2") format("woff2"),
+    url("./roboto-900.woff") format("woff");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -55,8 +55,8 @@
 
 @font-face {
   font-family: "Roboto Slab";
-  src: url("./vendor/roboto-slab-400-regular.woff2") format("woff2"),
-    url("./vendor/roboto-slab-400-regular.woff") format("woff");
+  src: url("./roboto-slab-400-regular.woff2") format("woff2"),
+    url("./roboto-slab-400-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -64,8 +64,8 @@
 
 @font-face {
   font-family: "Roboto Slab";
-  src: url("./vendor/roboto-slab-700.woff2") format("woff2"),
-    url("./vendor/roboto-slab-700.woff") format("woff");
+  src: url("./roboto-slab-700.woff2") format("woff2"),
+    url("./roboto-slab-700.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

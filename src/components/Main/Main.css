@@ -51,7 +51,7 @@
 .search-results__show-more {
   display: block;
   margin: 0 auto;
-  border: 1px solid;
+  border: 1px solid #1a1b22;
   border-radius: 80px;
   padding: 18px 20px;
   font-weight: 500;
@@ -59,7 +59,14 @@
   line-height: 24px;
   cursor: pointer;
   background: transparent;
+  color: #1a1b22;
   min-width: 288px;
+  transition: all 0.3s ease;
+}
+
+.search-results__show-more:hover {
+  background: #1a1b22;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 1023px) and (min-width: 769px) {

@@ -11,19 +11,22 @@ A modern, responsive news application built with React that allows users to sear
 ### Core Functionality
 
 - **News Search**: Search for news articles using the NewsAPI
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Interactive Cards**: Clickable news cards with hover effects
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices with enhanced mobile navigation
+- **Interactive Cards**: Clickable news cards with hover effects and improved readability
 - **Save Articles**: Bookmark articles for later reading (authentication required)
-- **User Authentication**: Sign up and sign in functionality
+- **User Authentication**: Sign up and sign in functionality with accessible form design
 
 ### User Interface
 
 - **Modern Design**: Clean, professional interface with smooth animations
+- **Enhanced Accessibility**: Improved color contrast ratios for better readability (WCAG AA compliant)
+- **Mobile-First Design**: Full-width mobile buttons and optimized mobile menu functionality
 - **Loading States**: Visual feedback with spinning preloader during searches
 - **Modal System**: Elegant login/register modals with multiple close options
-- **Navigation**: Seamless routing between home and saved articles pages
+- **Navigation**: Seamless routing between home and saved articles pages with consistent header styling
 - **Success Feedback**: User-friendly confirmation modals for actions
 - **Interactive Tooltips**: Helpful save/unsave action indicators
+- **Optimized Layout**: Improved spacing and visual hierarchy across all pages
 
 ## 🛠️ Technology Stack
 
@@ -128,22 +131,33 @@ LINTING.md                   # Linting setup documentation
 
 ### Responsive Layout
 
-- **Desktop**: 3-column news grid
-- **Tablet**: 2-column news grid
-- **Mobile**: Single-column layout
+- **Desktop**: 3-column news grid with centered layout (max-width: 1440px)
+- **Tablet**: 2-column news grid with optimized spacing
+- **Mobile**: Single-column layout with full-width buttons and collapsible navigation
+
+### Visual Consistency
+
+- **Unified Background**: Clean white background across all pages
+- **Header Design**: Consistent header styling that extends full-width
+- **Typography**: Improved text contrast and readability throughout
+- **Spacing**: Optimized padding and margins for better visual hierarchy
 
 ### Interactive Elements
 
-- **Hover Effects**: Card elevation and color changes
+- **Hover Effects**: Card elevation and color changes with improved contrast
 - **Loading States**: Smooth animations during API calls
 - **Modal System**: Multiple close methods (X button, outside click, Escape key)
+- **Mobile Navigation**: Collapsible hamburger menu with proper visibility across all themes
+- **Button Design**: Full-width mobile buttons following Figma design specifications
 
 ### Accessibility
 
+- **Color Contrast**: Enhanced contrast ratios for all text elements (WCAG AA compliant)
 - **ARIA Labels**: Screen reader friendly
 - **Keyboard Navigation**: Full keyboard support
 - **Focus Management**: Proper focus handling in modals
 - **ESLint A11y**: Automated accessibility linting and enforcement
+- **Mobile Usability**: Optimized touch targets and responsive design
 
 ## 🔧 Available Scripts
 
@@ -182,7 +196,33 @@ The project uses modern ESLint 9.x with flat config for comprehensive code quali
 
 For detailed linting documentation, see [LINTING.md](./LINTING.md).
 
-## 🌐 API Integration
+## 🚀 Recent Improvements (Version 1.1)
+
+### Accessibility Enhancements
+
+- **Enhanced Color Contrast**: Improved text readability across all components
+  - News card text elements (date, description, source)
+  - Form placeholder text and disabled states
+  - Search form subtitle and navigation elements
+  - Footer and about page text visibility
+
+### Mobile Experience Optimization
+
+- **Full-Width Mobile Buttons**: All submit buttons now take 100% width on mobile (following Figma design)
+- **Mobile Navigation Fix**: Resolved hamburger menu visibility issues on Saved Articles page
+- **Responsive Button Design**: Enhanced touch targets for better mobile usability
+
+### Layout and Visual Improvements
+
+- **Header Consistency**: Fixed dark side spacing issues on Saved Articles page
+- **Layout Optimization**: Removed excessive padding for better content flow
+- **Global Background**: Unified white background across all pages for visual consistency
+
+### Code Quality
+
+- **ESLint Compliance**: All changes maintain strict code quality standards
+- **Modern CSS**: Clean, maintainable stylesheets with BEM methodology
+- **Responsive Design**: Consistent behavior across all device breakpoints
 
 ### NewsAPI
 
@@ -190,20 +230,20 @@ For detailed linting documentation, see [LINTING.md](./LINTING.md).
 - **Features**: Search by keyword, date filtering, source filtering
 - **Rate Limits**: 1000 requests per day (free tier)
 
-### Authentication
+## 🌐 API Integration
 
 - **Mock Implementation**: Currently uses client-side simulation
 - **Features**: User registration, login, session management
 - **Future**: Will be connected to backend API in Stage 2
 
-## 📱 Responsive Breakpoints
+### Authentication
 
 ```css
 /* Mobile */
 @media (max-width: 480px) /* Tablet */ @media (max-width: 768px) /* Desktop */ @media (min-width: 769px);
 ```
 
-## 🚀 Deployment
+## � Responsive Breakpoints
 
 The application is deployed using Netlify with automatic deployments from the `stage-1-frontend-and-api` branch.
 
@@ -253,4 +293,4 @@ This project is part of a web development bootcamp final project.
 
 ---
 
-_This project represents Stage 1 of a full-stack news application with professional-grade code quality standards and modern development practices. Future stages will include backend API development and advanced features._
+_This project represents Stage 1 of a full-stack news application with professional-grade code quality standards, modern development practices, and comprehensive accessibility features. Recent updates include enhanced mobile responsiveness, improved color contrast for better accessibility, and optimized layout consistency across all pages._

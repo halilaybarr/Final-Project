@@ -59,4 +59,9 @@
     font-size: 18px;
     line-height: 22px;
   }
+
+  .success-modal__button {
+    width: 100%;
+    min-width: auto;
+  }
 }

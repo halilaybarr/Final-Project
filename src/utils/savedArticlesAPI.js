@@ -5,7 +5,7 @@ export function getItems() {
         {
           _id: "65f7368dfb74bd6a92114c85",
           title: "Scientists Discover New Species of Deep-Sea Fish",
-          url: "https://example.com/news/deep-sea-fish-discovery",
+          url: "https://www.sciencedaily.com/news/earth_climate/marine_science/",
           urlToImage:
             "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400",
           description:
@@ -17,7 +17,7 @@ export function getItems() {
         {
           _id: "65f7371e7bce9e7d331b11a0",
           title: "Revolutionary AI Technology Transforms Healthcare",
-          url: "https://example.com/news/ai-healthcare-breakthrough",
+          url: "https://www.nature.com/subjects/health-care",
           urlToImage:
             "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400",
           description:
@@ -29,7 +29,7 @@ export function getItems() {
         {
           _id: "65f7372a8bce9e7d331b11a1",
           title: "Climate Change: Arctic Ice Reaches Record Low",
-          url: "https://example.com/news/arctic-ice-record-low",
+          url: "https://climate.nasa.gov/news/",
           urlToImage:
             "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
           description:
@@ -41,7 +41,7 @@ export function getItems() {
         {
           _id: "65f7372b8bce9e7d331b11a2",
           title: "Yellowstone National Park Sees Record Wildlife Recovery",
-          url: "https://example.com/news/yellowstone-wildlife-recovery",
+          url: "https://www.nps.gov/yell/learn/nature/index.htm",
           urlToImage:
             "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400",
           description:
@@ -53,7 +53,7 @@ export function getItems() {
         {
           _id: "65f7372c8bce9e7d331b11a3",
           title: "New Photography Techniques Capture Stunning Nature Scenes",
-          url: "https://example.com/news/nature-photography-techniques",
+          url: "https://www.nationalgeographic.com/photography/",
           urlToImage:
             "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400",
           description:

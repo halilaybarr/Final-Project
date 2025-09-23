@@ -53,10 +53,6 @@
   color: #1a1b22;
 }
 
-.header_dark .header__menu-line {
-  background: #1a1b22;
-}
-
 .header_dark .header__menu-button {
   display: flex;
   flex-direction: column;
@@ -201,6 +197,14 @@
     background: white;
     transition: all 0.3s ease;
     transform-origin: center;
+  }
+
+  .header_dark .header__menu-line {
+    background: #1a1b22;
+  }
+
+  .header__menu-button_active .header__menu-line {
+    background: white;
   }
 
   .header__menu-button_active .header__menu-line:nth-child(1) {

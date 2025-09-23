@@ -51,7 +51,7 @@
   font-size: 18px;
   line-height: 24px;
   margin: 0 0 80px 0;
-  opacity: 0.8;
+  opacity: 0.9;
   max-width: 720px;
 }
 
@@ -201,7 +201,8 @@
   .search-form__button {
     position: static;
     transform: none;
-    align-self: flex-start;
+    align-self: stretch;
+    width: 100%;
   }
 
   .search-form__input {

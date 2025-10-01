@@ -184,7 +184,7 @@
     border: none;
     cursor: pointer;
     padding: 4px;
-    z-index: 1002;
+    z-index: 10000;
   }
 
   .header_dark .header__menu-button {
@@ -201,6 +201,10 @@
 
   .header_dark .header__menu-line {
     background: #1a1b22;
+  }
+
+  .header_dark .header__menu-button_active .header__menu-line {
+    background: white;
   }
 
   .header__menu-button_active .header__menu-line {
@@ -222,20 +226,27 @@
   .header__nav {
     position: fixed;
     top: 0;
+    left: 0;
     right: -100%;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
+    min-height: 100vh;
     background: #1a1b22;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 48px;
-    transition: right 0.3s ease;
-    z-index: 1001;
+    transition: right 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    overflow-y: auto;
   }
 
   .header__nav_open {
     right: 0;
+    visibility: visible;
+    opacity: 1;
   }
 
   .header__signin,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import "./Header.css";
@@ -14,6 +14,32 @@ const Header = ({
 
   const isHomePage = currentPath === "/";
   const headerClass = isHomePage ? "header" : "header header_dark";
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
+  // Handle Escape key to close mobile menu
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape" && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isMobileMenuOpen]);
 
   const handleSignInClick = () => {
     onOpenLoginModal();
@@ -31,6 +57,13 @@ const Header = ({
   const handleLogout = () => {
     onLogout();
     setIsMobileMenuOpen(false);
+  };
+
+  // Handle click outside to close menu
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsMobileMenuOpen(false);
+    }
   };
 
   return (
@@ -53,6 +86,7 @@ const Header = ({
 
       <div
         className={`header__nav ${isMobileMenuOpen ? "header__nav_open" : ""}`}
+        onClick={handleOverlayClick}
       >
         <Navigation
           isLoggedIn={isLoggedIn}

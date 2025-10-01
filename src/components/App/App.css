@@ -1,0 +1,14 @@
+/* App.css */
+/* Styles for App component */
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.app__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}

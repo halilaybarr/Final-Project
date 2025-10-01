@@ -1,0 +1,5 @@
+/* Import shared modal styles */
+@import "../LoginModal/LoginModal.css";
+
+/* RegisterModal inherits all styles from LoginModal */
+/* No additional styles needed as they share the same design */

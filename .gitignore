@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+node_modules/
+.env
+.DS_Store
+*.log
 
 # Editor directories and files
 .vscode/*
@@ -99,3 +103,4 @@ public
 # Temporary folders
 tmp/
 temp/
+

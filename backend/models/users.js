@@ -2,29 +2,33 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import validator from "validator";
 
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    validate: {
-      validator: (v) => validator.isEmail(v),
-      message: "Invalid email format",
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      validate: {
+        validator: (v) => validator.isEmail(v),
+        message: "Invalid email format",
+      },
+    },
+    password: {
+      type: String,
+      required: true,
+      select: false,
+    },
+    name: {
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 30,
     },
   },
-  password: {
-    type: String,
-    required: true,
-    select: false,
-  },
-  name: {
-    type: String,
-    required: true,
-    minlength: 2,
-    maxlength: 30,
-  },
-  timestamps: true,
-});
+  {
+    timestamps: true,
+  }
+);
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
@@ -36,3 +40,7 @@ userSchema.pre("save", async function (next) {
     next(error);
   }
 });
+
+const User = mongoose.model("User", userSchema);
+
+export default User;

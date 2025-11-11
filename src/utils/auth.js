@@ -1,64 +1,69 @@
-export const authorize = (credentials) => {
-  return new Promise((resolve, reject) => {
-    const { email, password } = credentials;
+const BASE_URL = "http://localhost:3001";
 
-    if (!email || !password) {
-      reject(new Error("Email and password are required"));
-      return;
-    }
-
-    setTimeout(() => {
-      if (email === "wrong@email.com") {
-        reject(new Error("Incorrect email or password"));
-      } else {
-        // For demo purposes, any valid email will work
-        const userName = email.includes("@") ? email.split("@")[0] : "User";
-        resolve({
-          token: "a-fake-jwt-token-12345",
-          name: userName.charAt(0).toUpperCase() + userName.slice(1),
-        });
-      }
-    }, 800);
-  });
+const handleResponse = async (response) => {
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || "Something went wrong");
+  }
+  return response.json();
 };
 
-export const register = (userData) => {
-  return new Promise((resolve, reject) => {
-    const { email, password, name } = userData;
+export const authorize = async (credentials) => {
+  const { email, password } = credentials;
 
-    if (!email || !password || !name) {
-      reject(new Error("All fields are required"));
-      return;
-    }
+  if (!email || !password) {
+    throw new Error("Email and password are required");
+  }
 
-    setTimeout(() => {
-      if (email === "existing@email.com") {
-        reject(new Error("User with this email already exists"));
-      } else {
-        resolve({
-          token: "a-fake-jwt-token-67890",
-          name: name.charAt(0).toUpperCase() + name.slice(1),
-        });
-      }
-    }, 800);
+  const response = await fetch(`${BASE_URL}/users/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
   });
+
+  const data = await handleResponse(response);
+  return {
+    token: data.token,
+    name: data.user.name,
+  };
 };
 
-export const checkToken = (token) => {
-  return new Promise((resolve, reject) => {
-    if (!token || token === "invalid-token") {
-      reject(new Error("Invalid token"));
-      return;
-    }
+export const register = async (userData) => {
+  const { email, password, name } = userData;
 
-    setTimeout(() => {
-      resolve({
-        data: {
-          name: "John Doe",
-          email: "user@example.com",
-          _id: "65f7368dfb74bd6a92114c85",
-        },
-      });
-    }, 500);
+  if (!email || !password || !name) {
+    throw new Error("All fields are required");
+  }
+
+  const response = await fetch(`${BASE_URL}/users/signup`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password, name }),
   });
+
+  const data = await handleResponse(response);
+
+  // After registration, log in to get token
+  return authorize({ email, password });
+};
+
+export const checkToken = async (token) => {
+  if (!token) {
+    throw new Error("Token is required");
+  }
+
+  const response = await fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await handleResponse(response);
+  return { data };
 };

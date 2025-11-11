@@ -47,7 +47,7 @@ const AppContent = () => {
         "c336c646c8d44e399c65a611afacf0fd",
         weekAgo.toISOString().split("T")[0],
         today.toISOString().split("T")[0],
-        100,
+        100
       );
 
       if (articles.length === 0) {
@@ -58,7 +58,7 @@ const AppContent = () => {
     } catch (err) {
       setError(
         err.message ||
-          "Sorry, something went wrong during the request. Please try again later.",
+          "Sorry, something went wrong during the request. Please try again later."
       );
       setArticles([]);
     } finally {
@@ -74,20 +74,27 @@ const AppContent = () => {
     try {
       const { authorize } = await import("../../utils/auth.js");
       const userData = await authorize(credentials);
+
+      // Store the JWT token in localStorage FIRST
+      localStorage.setItem("jwt", userData.token);
+
       setCurrentUser({ name: userData.name });
       setIsLoggedIn(true);
 
-      // Load saved articles after successful login
+      // Close modal first
+      setActiveModal(null);
+
+      // Load saved articles after token is stored
       try {
         const { getItems } = await import("../../utils/savedArticlesAPI.js");
         const userSavedArticles = await getItems();
         setSavedArticles(userSavedArticles);
       } catch (error) {
         console.error("Error loading saved articles:", error);
+        // Don't throw, just log - user can still use the app
       }
 
-      // Close modal and navigate to saved articles
-      setActiveModal(null);
+      // Navigate to saved articles
       navigate("/saved-news");
 
       return userData;
@@ -100,6 +107,10 @@ const AppContent = () => {
     try {
       const { register } = await import("../../utils/auth.js");
       const newUser = await register(userData);
+
+      // Store the JWT token in localStorage
+      localStorage.setItem("jwt", newUser.token);
+
       setActiveModal("success");
       return newUser;
     } catch (error) {
@@ -108,6 +119,9 @@ const AppContent = () => {
   };
 
   const handleLogout = () => {
+    // Remove JWT token from localStorage
+    localStorage.removeItem("jwt");
+
     setCurrentUser(null);
     setIsLoggedIn(false);
     setSavedArticles([]);
@@ -168,8 +182,8 @@ const AppContent = () => {
         prev.filter(
           (saved) =>
             (saved._id && saved._id !== article._id) ||
-            saved.url !== article.url,
-        ),
+            saved.url !== article.url
+        )
       );
     } catch (error) {
       console.error("Error removing article:", error);

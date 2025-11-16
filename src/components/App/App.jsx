@@ -44,7 +44,7 @@ const AppContent = () => {
 
       const articles = await fetchNews(
         searchQuery,
-        "c336c646c8d44e399c65a611afacf0fd",
+        import.meta.env.VITE_NEWS_API_KEY,
         weekAgo.toISOString().split("T")[0],
         today.toISOString().split("T")[0],
         100,

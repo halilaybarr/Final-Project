@@ -16,6 +16,12 @@ const NewsCard = ({
   onOpenLoginModal,
 }) => {
   const [showTooltip, setShowTooltip] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
@@ -73,11 +79,18 @@ const NewsCard = ({
 
   return (
     <article className="news-card" onClick={handleCardClick}>
-      <img
-        src={article.urlToImage || "/default-news-image.jpg"}
-        alt={article.title}
-        className="news-card__image"
-      />
+      {!imageError && article.urlToImage ? (
+        <img
+          src={article.urlToImage}
+          alt={article.title}
+          className="news-card__image"
+          onError={handleImageError}
+        />
+      ) : (
+        <div className="news-card__image news-card__image_placeholder">
+          <span className="news-card__no-image-text">No image available</span>
+        </div>
+      )}
 
       {showRemoveButton ? (
         <>
